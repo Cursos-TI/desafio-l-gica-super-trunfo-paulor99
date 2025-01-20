@@ -23,7 +23,7 @@ int main() {
     float pib_per_capita, pib_per_capita2;
     float super_poder1, super_poder2;
     int opcao;
-
+    float resultado;
 
     //print e leitura de dados da carta1
     printf("Insira o nome da cidade 1: \n");
@@ -119,17 +119,64 @@ int main() {
     }*/
 
     printf("Escolha uma opção para comparar:\n");
-    printf("1. Comparar a população das duas cidades\n");
-    printf("2. Comparar a area das duas cidades\n");
-    printf("3. Comparar o pib das duas cidades\n");
-    printf("4. Comparar o numero de pontos turisticos das duas cidades\n");
-    printf("5. Comparar a densidade populacional das duas cidades (densidade menor vence)\n");
-    printf("6. Comparar o pib per capita das duas cidades\n");
+    printf("1. Comparar a população das duas cidades e a area das duas cidades\n");
+    printf("2. Comparar o pib das duas cidades e numero de pontos turisticos das duas cidades\n");
+    printf("3. Comparar a densidade populacional das duas cidades e o pib per capita das cidades\n");
     printf("Escolha: ");
     scanf("%d", &opcao);
 
+    switch (opcao)
+    {
+    case 1:
+        if((populacao > populacao2) && (area > area2)){
+        printf("Carta 1 venceu:\n");
+        resultado = (float) populacao + area;
+        printf("Soma das propriedades da carta 1: %.2f", resultado);
+        }else if ((populacao == populacao2) && (area == area2)){
+            printf("Empate entre as cartas:\n");
+        }else{
+        printf("Carta 2 venceu:\n");
+        resultado = (float) populacao2 + area2;
+        printf("Soma das propriedades da carta 2: %.2f", resultado);    
+
+        }
+        break;
+
+        case 2:
+        if((pib > pib2) && (pnt_turisticos > pnt_turisticos2)){
+        printf("Carta 1 venceu\n");
+        resultado = (float) pnt_turisticos + pib;
+        printf("Soma das propriedades da carta 1: %.2f", resultado);
+        }else if ((pib == pib2) && (pnt_turisticos == pnt_turisticos2)){
+            printf("Empate entre as cartas\n");
+        }else{
+        printf("Carta 2 venceu\n");
+         resultado = (float) pnt_turisticos2 + pib2;
+        printf("Soma das propriedades da carta 2: %.2f", resultado);    
+        }
+        break;
+
+        case 3:
+        if((densidade_populacional < densidade_populacional2) && (pib_per_capita > pib_per_capita2)){
+        printf("Carta 1 venceu\n");
+        resultado = densidade_populacional + pib_per_capita;
+        printf("Soma das propriedades da carta 1: %.2f", resultado);
+        }else if ((densidade_populacional == densidade_populacional2) && (pib_per_capita == pib_per_capita2)){
+            printf("Empate entre as cartas\n");
+        }else{
+        printf("Carta 2 venceu:\n");
+         resultado =  densidade_populacional2 + pib_per_capita2;
+        printf("Soma das propriedades da carta 2: %.2f", resultado);    
+        }
+        break;
+         
+    default:
+     printf("Opção invalida!\n"); 
+        break;
+    }
+
     //Switch para comparação
-    switch(opcao){
+   /* switch(opcao){
         case 1:
         if(populacao > populacao2){
          printf("A cidade da carta 1 tem a maior população. Carta 1 venceu.\n");
@@ -195,6 +242,7 @@ int main() {
             break;
 
     }
+    */
 
     // Cadastro das Cartas:
     // Implemente a lógica para solicitar ao usuário que insira os dados das cidades
